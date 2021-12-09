@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="windows-1251">
+    <title>Test Task</title>
+</head>
+
+<body>
+    <h1 id="heading"></h1>
+    <div id="div" width="400" height="400"></div>
+
+<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+<script>
+
+ //Запрос 6-ти чисел - координат
+   var x1 = prompt("Enter FIRST number from 0 to 10:");
+   var y1 = prompt("Enter SECOND number from 0 to 10:");
+   var x2 = prompt("Enter THIRD number from 0 to 10:");
+   var y2 = prompt("Enter FOURTH number from 0 to 10:");
+   var x3 = prompt("Enter FIFTH number from 0 to 10:");
+   var y3 = prompt("Enter SIXTH number from 0 to 10:");
+
+ //Вывод в консоль координат для каждой из трёх точек
+   console.log("Coordinates (x, y) of dot A: (" + x1 + ", " + y1 + ")");
+   console.log("Coordinates (x, y) of dot B: (" + x2 + ", " + y2 + ")");
+   console.log("Coordinates (x, y) of dot C: (" + x3 + ", " + y3 + ")");
+
+ //Функция - длина отрезка
+   var line = function (n, o, k, m) {
+     return Math.sqrt(((n - o)*(n - o)) + ((k-m)*(k-m)));
+   };
+
+   var ab = line(x2, x1, y2, y1);
+   var bc = line(x3, x2, y3, y2);
+   var ac = line(x3, x1, y3, y1);
+
+ //Вывод значений длины отрезков
+   console.log("Length of AB is: " + ab);
+   console.log("Length of BC is: " + bc);
+   console.log("Length of AC is: " + ac);
+
+ //Проверка треугольника - Равносторонний или нет?
+   if (ab == bc && bc == ac) {
+     console.log("Triangle IS Equilateral");
+   } else {
+     console.log("Triangle IS NOT Equilateral");
+   };
+
+ //Проверка треугольника - Равнобедренный или нет?
+   if (ab == bc || ab == ac || ac == bc) {
+     console.log("Triangle IS Isosceles");
+   } else {
+     console.log("Triangle IS NOT Isosceles");
+   };
+
+ //Проверка треугольника - Прямоугольный или нет?
+   if (bc>ab && bc>ac && (bc*bc - (ab*ab + ac*ac)) <= 1) {
+     console.log("Triangle IS Right");
+   } else if (ab>bc && ab>ac && (ab*ab - (ac*ac + bc*bc)) <= 1) {
+     console.log("Triangle IS Right");
+   } else if (ac>ab && ac>bc && (ac*ac - (ab*ab + bc*bc)) <= 1) {
+     console.log("Triangle IS Right");
+   } else {
+     console.log("Triangle IS NOT Right");
+   }; 
+
+ //Perimetr
+   var perimetr = ab + bc + ac;
+   console.log("Perimetr: " + perimetr);
+
+ //Вывод всех парных чисел от 0 до величины периметра включительно
+   console.log("Parity numbers in range from 0 to triangle perimetr:");
+   for (i=0; i<perimetr; i=i+2) {
+     console.log(i);
+   };
+
+</script>
+
+</body>
+</html>
